@@ -1,0 +1,479 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg0);
+  color: var(--text-main);
+}
+
+.header {
+  background-color: var(--bg1);
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--bg3);
+  z-index: 10;
+  position: sticky;
+  top: 0;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: calc(100vh - 57px); /* Header height */
+}
+
+/* Left column - Controls panel */
+.controls-panel {
+  width: 320px;
+  background-color: var(--bg1);
+  border-right: 1px solid var(--bg3);
+  overflow-y: auto;
+  height: 100%;
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+.panel {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  padding: var(--spacing-md);
+}
+
+.panel-header {
+  background: var(--bg3);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-weight: 600;
+  margin: calc(-1 * var(--spacing-md));
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--bg3);
+}
+
+.runs-selection, 
+.metrics-selection, 
+.step-selection {
+  background-color: var(--bg2);
+  border: 1px solid var(--bg3);
+  padding: var(--spacing-md);
+}
+
+.runs-selection h2, 
+.metrics-selection h2, 
+.step-selection h2 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--bg3);
+}
+
+.run-list, 
+.metric-list {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.run-list {
+  max-height: 310px;
+}
+
+.metric-list {
+  max-height: 150px;
+}
+
+.run-item, 
+.metric-item {
+  padding: var(--spacing-xs) 0;
+}
+
+.run-item label, 
+.metric-item label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.step-selection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.refresh-button {
+  background-color: var(--bg3);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-main);
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.refresh-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.refresh-button:hover:not(:disabled) {
+  background-color: var(--bg4);
+}
+
+.step-selection .slider-container {
+  margin: var(--spacing-md) 0;
+}
+
+.step-input-group {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.step-input-group input {
+  flex: 1;
+}
+
+.step-input-group select {
+  min-width: 100px;
+}
+
+.step-availability {
+  margin-top: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.run-step-status {
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.run-step-status.has-step {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+.run-step-status.no-step {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+}
+
+.loading-steps {
+  font-style: italic;
+  color: var(--text-disabled);
+}
+
+/* Right column - Content area */
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md);
+  background-color: var(--bg0);
+  position: relative;
+  height: 100%;
+}
+
+.metric-sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.metric-section {
+  background-color: var(--bg1);
+  border: 1px solid var(--bg3);
+  padding: var(--spacing-md);
+}
+
+.metric-section h3 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--bg3);
+}
+
+.run-images-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.run-row {
+  background-color: var(--bg2);
+  padding: var(--spacing-md);
+}
+
+.run-row h4 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-main);
+}
+
+.images-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+/* Image thumbnails */
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--bg3);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--interactive-transition);
+  background-color: var(--image-bg);
+}
+
+.thumbnail:hover {
+  border-color: var(--text-headings);
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.thumbnail.selected {
+  border-color: var(--text-headings);
+  border-width: 2px;
+}
+
+.thumbnail.compared {
+  border-color: var(--warning);
+  border-width: 2px;
+}
+
+.no-images,
+.no-data {
+  padding: var(--spacing-md);
+  background-color: var(--bg2);
+  color: var(--text-disabled);
+  text-align: center;
+}
+
+.error-message {
+  padding: var(--spacing-md);
+  background-color: rgba(255, 120, 120, 0.1);
+  color: var(--warning);
+  border: 1px solid var(--warning);
+  margin-bottom: var(--spacing-md);
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(14, 15, 33, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--bg3);
+  border-radius: 50%;
+  border-top-color: var(--text-headings);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Side panel */
+.side-panel {
+  position: fixed;
+  top: 57px; /* Header height */
+  right: 0;
+  height: calc(100vh - 57px);
+  background-color: var(--bg1);
+  border-left: 1px solid var(--bg3);
+  transition: transform var(--interactive-transition), width var(--interactive-transition);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.side-panel-collapsed {
+  transform: translateX(calc(100% - 30px));
+}
+
+.side-panel-visible {
+  box-shadow: var(--shadow);
+}
+
+.side-panel-tab {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  padding: var(--spacing-md);
+  background-color: var(--bg2);
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform-origin: center;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--bg3);
+  font-weight: 600;
+  color: var(--text-disabled);
+  transition: background-color var(--interactive-transition), color var(--interactive-transition);
+}
+
+.side-panel-tab:hover {
+  background-color: var(--bg3);
+  color: var(--text-main);
+}
+
+.side-panel-content {
+  flex: 1;
+  padding: var(--spacing-md);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.side-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--bg3);
+  margin-bottom: var(--spacing-md);
+}
+
+.side-panel-header h2 {
+  margin: 0;
+}
+
+.close-panel {
+  background: transparent;
+  border: none;
+  color: var(--text-disabled);
+  cursor: pointer;
+  font-size: 20px;
+  padding: var(--spacing-xs);
+  transition: color var(--interactive-transition);
+}
+
+.close-panel:hover {
+  color: var(--text-main);
+}
+
+.side-panel-images {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-md);
+  flex: 1;
+}
+
+.panel-image {
+  background-color: var(--image-bg);
+  padding: var(--spacing-md);
+  border: 1px solid var(--bg3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  flex: 1;
+  position: relative;
+}
+
+.panel-image h4 {
+  margin: 0;
+  color: var(--text-main);
+  white-space: normal;
+  overflow-y: auto;
+  max-width: 100%;
+  cursor: default;
+  max-height: 80px;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Ensure the scrollbar doesn't cause layout shifts when it appears */
+.panel-image h4::-webkit-scrollbar {
+  width: 6px;
+}
+
+.panel-image h4::-webkit-scrollbar-thumb {
+  background-color: var(--bg3);
+  border-radius: 3px;
+}
+
+.panel-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.panel-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.resize-handle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+  background-color: transparent;
+  transition: background-color var(--interactive-transition);
+  user-select: none;
+}
+
+.resize-handle:hover,
+.resize-handle.resizing {
+  background-color: var(--text-headings);
+  opacity: 0.2;
+}
+
+/* Prevent text selection during resizing */
+.side-panel.resizing * {
+  user-select: none !important;
+}

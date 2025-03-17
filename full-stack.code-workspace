@@ -1,0 +1,20 @@
+{
+    "folders": [
+        {
+            "path": "backend",
+        },
+        {
+            "path": "frontend",
+        },
+    ],
+    "settings": {
+        "window.title": "wandb-run-comparer",
+        "git.openRepositoryInParentFolders": "always",
+        "workbench.colorCustomizations": {
+            "activityBar.background": "#312D2E",
+            "titleBar.activeBackground": "#4f8a81",
+            "titleBar.activeForeground": "#FAFAFA",
+            "titleBar.inactiveBackground": "#4f8a81"
+        }
+    }
+}

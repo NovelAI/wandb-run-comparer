@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "main",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "main",
+            "justMyCode": true,
+            "subProcess": true,
+            "args": [],
+            "env": {
+            }
+        },
+        // doesn't work, don't know why
+        // {
+        //     "name": "gunicorn main:app",
+        //     "type": "debugpy",
+        //     "request": "launch",
+        //     "module": "gunicorn",
+        //     "justMyCode": true,
+        //     "subProcess": true,
+        //     "args": [
+        //         "main:app",
+        //         // "--workers", "1",
+        //         // "--worker-class", "uvicorn.workers.UvicornWorker",
+        //         // "--bind", "0.0.0.0:7100",
+        //         // "-p", "comparer.pid",
+        //     ],
+        //     "env": {
+        //     }
+        // },
+    ]
+
+}
